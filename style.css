@@ -95,6 +95,11 @@ color: #E0B612;
     margin-top: 20px;
     border-radius: 15px;
     padding: 5px 20px;
+}
+#wrongPinNotify{
+    display: none;
+}
+#rightPinNotify{
     display: none;
 }
 .notify-section{
