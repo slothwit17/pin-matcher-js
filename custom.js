@@ -35,12 +35,12 @@ function display(value){
     const numbers = document.getElementById('numDisplay');
     numbers.value = numbers.value + value;
 }
-
+var attempt = 3;
 
 //submit btn event handler
 document.getElementById('cal-main').addEventListener('click', function(event){
     
-    var attempt = 3;
+    
     const btn = event.target.innerText;
     const generateNumber = document.getElementById('ganerated-pin').value;
     const inputNumber = document.getElementById('numDisplay').value;
@@ -49,23 +49,28 @@ document.getElementById('cal-main').addEventListener('click', function(event){
     const attemptLeft = document.getElementById('attemtCount');
 
     if (btn == "Submit"){
-        if(generateNumber == inputNumber){   
+        if(inputNumber == ''){
+            alert("Input a number to match!");
+        }
+        else if(generateNumber == inputNumber){   
             rightNotify.style.display = "block";  
             wrongNotify.style.display = "none";
-            
+            inputNumber = '';
         }
         
         else{
             rightNotify.style.display = "none";
             wrongNotify.style.display = "block";
             attempt --;          
-            console.log(attempt); 
+            attemptLeft.innerText = attempt; 
             if (attempt == 0) {
+                document.getElementById('numDisplay').disabled = true;
                 document.getElementById('submit').disabled = true;
+                alert("No attempt left!")
                 return false;
             }
         }
     }
-
+    
     
 })
